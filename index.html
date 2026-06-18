@@ -12,7 +12,7 @@
         }
 
         body {
-            background-color: #030303;
+            background-color: #0d0d0d;
             font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
             color: #ffffff;
             overflow-x: hidden;
@@ -24,7 +24,7 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background-color: #0d1117;
+            background-color: #121212;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -37,7 +37,7 @@
             width: 90%;
             max-width: 400px;
             height: 8px;
-            background-color: #161b22;
+            background-color: #222222;
             border-radius: 4px;
             overflow: hidden;
             position: relative;
@@ -46,7 +46,7 @@
         .progress-fill {
             height: 100%;
             width: 40%;
-            background: linear-gradient(90deg, #a855f7, #ec4899);
+            background: linear-gradient(90deg, #990011, #ffffff);
             border-radius: 4px;
             position: absolute;
             left: -40%;
@@ -54,7 +54,7 @@
         }
 
         .loading-text {
-            color: #8b949e;
+            color: #888888;
             font-size: 1.1rem;
             margin-top: 16px;
             letter-spacing: 2px;
@@ -87,24 +87,25 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            background: #030303;
+            background: #0d0d0d;
             z-index: 1;
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s;
         }
 
+        /* Nowe tło: krwisty czerwony, biały, szary, grafitowy */
         .liquid-bg {
             position: absolute;
             top: -60%;
             left: -60%;
             width: 220%;
             height: 220%;
-            background: radial-gradient(circle at 30% 30%, #7c3aed 0%, transparent 45%),
-                        radial-gradient(circle at 70% 40%, #db2777 0%, transparent 50%),
-                        radial-gradient(circle at 40% 80%, #dc2626 0%, transparent 45%),
-                        radial-gradient(circle at 80% 80%, #1e3a8a 0%, transparent 50%);
+            background: radial-gradient(circle at 30% 30%, #990011 0%, transparent 45%),
+                        radial-gradient(circle at 70% 40%, #ffffff 0%, transparent 40%),
+                        radial-gradient(circle at 40% 80%, #555555 0%, transparent 45%),
+                        radial-gradient(circle at 80% 80%, #202020 0%, transparent 50%);
             animation: liquidMove 18s infinite alternate ease-in-out;
             z-index: 1;
-            filter: blur(20px);
+            filter: blur(40px);
         }
 
         .glass-overlay {
@@ -114,8 +115,8 @@
             width: 100%;
             height: 100%;
             background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(50px) saturate(140%);
-            -webkit-backdrop-filter: blur(50px) saturate(140%);
+            backdrop-filter: blur(60px) saturate(130%);
+            -webkit-backdrop-filter: blur(60px) saturate(130%);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             z-index: 2;
         }
@@ -142,7 +143,7 @@
 
         .card-top span {
             font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.7);
             font-weight: 300;
             letter-spacing: 1px;
         }
@@ -154,11 +155,13 @@
             letter-spacing: -2px;
             opacity: 0;
             transform: translateY(30px);
+            color: #ffffff;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .card-bottom {
             font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.8);
             letter-spacing: 1px;
             opacity: 0;
             transform: translateY(20px);
@@ -184,7 +187,7 @@
 
         .projects-section {
             min-height: 100vh;
-            background-color: #030303;
+            background-color: #0d0d0d;
             padding: 120px 40px;
             display: flex;
             flex-direction: column;
@@ -199,12 +202,11 @@
             margin-bottom: 60px;
             font-weight: 600;
             letter-spacing: 1px;
-            background: linear-gradient(135deg, #ffffff 0%, #a3a3a3 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #888888 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* Kontener na projekty */
         .projects-grid {
             width: 100%;
             max-width: 1000px;
@@ -212,7 +214,6 @@
             justify-content: center;
         }
 
-        /* Karta projektu testowego */
         .project-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -226,7 +227,7 @@
 
         .project-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(168, 85, 247, 0.4);
+            border-color: rgba(153, 0, 17, 0.5);
             background: rgba(255, 255, 255, 0.05);
         }
 
@@ -243,14 +244,13 @@
         }
 
         .project-link {
-            color: #c084fc;
+            color: #ff4d5a;
             font-weight: 500;
             display: inline-flex;
             align-items: center;
             gap: 8px;
         }
 
-        /* Wysuwany panel boczny z informacjami (Drawer) */
         .project-drawer {
             position: fixed;
             top: 0;
@@ -258,7 +258,7 @@
             width: 100%;
             max-width: 500px;
             height: 100vh;
-            background: rgba(10, 10, 10, 0.75);
+            background: rgba(15, 15, 15, 0.8);
             backdrop-filter: blur(30px);
             -webkit-backdrop-filter: blur(30px);
             border-left: 1px solid rgba(255, 255, 255, 0.1);
@@ -268,7 +268,7 @@
             flex-direction: column;
             gap: 30px;
             transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: -20px 0 50px rgba(0, 0, 0, 0.6);
+            box-shadow: -20px 0 50px rgba(0, 0, 0, 0.7);
         }
 
         .project-drawer.active {
@@ -300,8 +300,8 @@
 
         .drawer-content .tag {
             display: inline-block;
-            background: rgba(168, 85, 247, 0.2);
-            color: #c084fc;
+            background: rgba(153, 0, 17, 0.2);
+            color: #ff4d5a;
             padding: 6px 14px;
             border-radius: 20px;
             font-size: 0.9rem;
@@ -347,7 +347,6 @@
             <h2>My Projects</h2>
             
             <div class="projects-grid">
-                <!-- Pierwszy projekt testowy -->
                 <div class="project-card" onclick="openDrawer()">
                     <h3>Project One</h3>
                     <p>To jest Twój pierwszy przykładowy projekt. Kliknij w tę kartę, aby zobaczyć ukryte szczegóły i pełny opis działania.</p>
@@ -357,9 +356,8 @@
         </section>
     </div>
 
-    <!-- Panel boczny z informacjami -->
     <div class="project-drawer" id="drawer">
-        <button class="close-btn" onclick="closeDrawer()">Zapnij / Zamknij</button>
+        <button class="close-btn" onclick="closeDrawer()">Zamknij</button>
         <div class="drawer-content">
             <span class="tag">UI/UX Design</span>
             <h3>Project One</h3>
@@ -400,15 +398,14 @@
             }
         });
 
-        // Funkcje do obsługi wysuwanego panelu informacyjnego
         function openDrawer() {
             document.getElementById('drawer').classList.add('active');
-            document.body.style.overflow = 'hidden'; // Blokuje scroll tła, gdy otwarty jest panel
+            document.body.style.overflow = 'hidden';
         }
 
         function closeDrawer() {
             document.getElementById('drawer').classList.remove('active');
-            document.body.style.overflow = 'auto'; // Przywraca scroll
+            document.body.style.overflow = 'auto';
         }
     </script>
 
