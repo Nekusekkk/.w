@@ -36,4 +36,4 @@ SEKCJA_3_PUNKTY:
 - Frontend/UI: Advanced Discord channel architecture, custom formatting, proprietary message layouts / embeds.
 
 ZDJĘCIA:
-t7446vv.png, ms520bk.jpg, vmrnkvd.png
+t7446vv.png, ms520bk.png, vmrnkvd.png
