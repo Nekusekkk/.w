@@ -111,3 +111,140 @@ function loadProjectData() {
         })
         .catch(err => console.error(err));
 }
+
+// MULTI-STEP ORDER FORM LOGIC
+let formData = {
+    name: '',
+    description: '',
+    serverExists: '',
+    serverLink: '',
+    discordTag: ''
+};
+
+function startForm() {
+    const box = document.getElementById('buy-box');
+    box.innerHTML = `
+        <div class="step-panel active" id="step-1">
+            <h4>To Buy a project we need informations</h4>
+            <label for="input-name">Name:</label>
+            <input type="text" id="input-name" class="form-input" placeholder="Your name or organization...">
+            <button class="next-btn" onclick="nextStep(1)">Next</button>
+        </div>
+    `;
+}
+
+function nextStep(currentStep) {
+    const box = document.getElementById('buy-box');
+    
+    if (currentStep === 1) {
+        formData.name = document.getElementById('input-name').value || 'Not provided';
+        box.innerHTML = `
+            <div class="step-panel active" id="step-2">
+                <h4>To Buy a project we need informations</h4>
+                <label for="input-desc">Description:</label>
+                <textarea id="input-desc" class="form-input" rows="4" placeholder="Describe your project vision and ideas..." style="resize:none; font-family:inherit;"></textarea>
+                <button class="next-btn" onclick="nextStep(2)">Next</button>
+            </div>
+        `;
+    } 
+    else if (currentStep === 2) {
+        formData.description = document.getElementById('input-desc').value || 'Not provided';
+        box.innerHTML = `
+            <div class="step-panel active" id="step-3">
+                <h4>To Buy a project we need informations</h4>
+                <label>Does the server exist?</label>
+                <div class="radio-group">
+                    <input type="radio" id="srv-yes" name="server_exist" value="Yes" checked onclick="toggleServerLink(true)">
+                    <label for="srv-yes" class="radio-label">Yes</label>
+                    
+                    <input type="radio" id="srv-no" name="server_exist" value="No" onclick="toggleServerLink(false)">
+                    <label for="srv-no" class="radio-label">No</label>
+                </div>
+                <div id="link-field-container">
+                    <label for="input-link" style="font-size:1.2rem; margin-bottom:10px;">Server Link:</label>
+                    <input type="text" id="input-link" class="form-input" placeholder="https://discord.gg/...">
+                </div>
+                <button class="next-btn" onclick="nextStep(3)">Next</button>
+            </div>
+        `;
+    }
+    else if (currentStep === 3) {
+        const yesRadio = document.getElementById('srv-yes');
+        formData.serverExists = yesRadio.checked ? 'Yes' : 'No';
+        
+        if (yesRadio.checked) {
+            formData.serverLink = document.getElementById('input-link').value || 'Not provided';
+        } else {
+            formData.serverLink = 'N/A (Server does not exist)';
+        }
+
+        box.innerHTML = `
+            <div class="step-panel active" id="step-4">
+                <h4>To Buy a project we need informations</h4>
+                <label for="input-dc">Your username on discord:</label>
+                <input type="text" id="input-dc" class="form-input" placeholder="e.g. username">
+                <button class="done-btn" onclick="submitForm()">Done</button>
+            </div>
+        `;
+    }
+}
+
+function toggleServerLink(show) {
+    const container = document.getElementById('link-field-container');
+    if (show) {
+        container.style.display = 'block';
+    } else {
+        container.style.display = 'none';
+    }
+}
+
+function submitForm() {
+    formData.discordTag = document.getElementById('input-dc').value || 'Not provided';
+    const box = document.getElementById('buy-box');
+    
+    // Webhook Embed Data Structure
+    const webhookUrl = 'https://discord.com/api/webhooks/1517283646166274081/4HfsbkIHDE_RifK5up4XartdsxW2hWi8PMR85Zz_Ruqj5rlqthATCrN6LsVxpfcN8xGQ';
+    
+    const packet = {
+        embeds: [{
+            title: "🚀 New Project Request!",
+            color: 10027025, // Hex #990011 converted to decimal
+            fields: [
+                { name: "👤 Name", value: formData.name, inline: true },
+                { name: "🎮 Discord User", value: formData.discordTag, inline: true },
+                { name: "🌐 Server Exists?", value: formData.serverExists, inline: false },
+                { name: "🔗 Server Link", value: formData.serverLink, inline: false },
+                { name: "📝 Description", value: formData.description, inline: false }
+            ],
+            timestamp: new Date().toISOString()
+        }]
+    };
+
+    // Send payload using native fetch API
+    fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(packet)
+    })
+    .then(() => {
+        // Show success layout with invitation link
+        box.innerHTML = `
+            <div class="step-panel active">
+                <h4 style="color:#ff4d5a; font-weight:600;">Success! Data transmitted.</h4>
+                <p style="color:#d4d4d4; font-size:1.1rem; line-height:1.6;">You are being transferred to our Discord server:</p>
+                <a href="https://discord.gg/xQ6XYSvjqE" target="_blank" class="dc-link">https://discord.gg/xQ6XYSvjqE</a>
+                <br>
+                <button class="ok-btn" onclick="resetForm()">Ok</button>
+            </div>
+        `;
+    })
+    .catch(err => {
+        console.error(err);
+        alert('Something went wrong while sending data. Please check your connection.');
+    });
+}
+
+function resetForm() {
+    const box = document.getElementById('buy-box');
+    box.innerHTML = `<button class="buy-btn" onclick="startForm()">Buy a project</button>`;
+}
