@@ -12,7 +12,7 @@
         }
 
         body {
-            background-color: #050505;
+            background-color: #030303;
             font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
             color: #ffffff;
             overflow-x: hidden;
@@ -24,7 +24,7 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background-color: #0f172a;
+            background-color: #0d1117;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -37,7 +37,7 @@
             width: 90%;
             max-width: 400px;
             height: 8px;
-            background-color: #1e293b;
+            background-color: #161b22;
             border-radius: 4px;
             overflow: hidden;
             position: relative;
@@ -46,7 +46,7 @@
         .progress-fill {
             height: 100%;
             width: 40%;
-            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+            background: linear-gradient(90deg, #a855f7, #ec4899);
             border-radius: 4px;
             position: absolute;
             left: -40%;
@@ -54,7 +54,7 @@
         }
 
         .loading-text {
-            color: #94a3b8;
+            color: #8b949e;
             font-size: 1.1rem;
             margin-top: 16px;
             letter-spacing: 2px;
@@ -78,46 +78,51 @@
             transition: opacity 0.5s ease;
         }
 
-        /* Animowane, płynne tło (Liquid) na całą sekcję */
+        /* Kontener na sekcje z płynnym przewijaniem */
         .hero-section {
             height: 100vh;
             width: 100%;
-            position: relative;
+            position: sticky;
+            top: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            background: #050505;
+            background: #030303;
+            z-index: 1;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s;
         }
 
+        /* Nowe żywe, mieszane kolory tła w ciągłym ruchu */
         .liquid-bg {
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 30%, #4a0005 0%, transparent 40%),
-                        radial-gradient(circle at 70% 60%, #990011 0%, transparent 50%),
-                        radial-gradient(circle at 40% 80%, #2b0004 0%, transparent 60%);
-            animation: liquidMove 15s infinite alternate ease-in-out;
+            top: -60%;
+            left: -60%;
+            width: 220%;
+            height: 220%;
+            background: radial-gradient(circle at 30% 30%, #7c3aed 0%, transparent 45%),
+                        radial-gradient(circle at 70% 40%, #db2777 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, #dc2626 0%, transparent 45%),
+                        radial-gradient(circle at 80% 80%, #1e3a8a 0%, transparent 50%);
+            animation: liquidMove 18s infinite alternate ease-in-out;
             z-index: 1;
+            filter: blur(20px);
         }
 
-        /* Warstwa Liquid Glass rozciągnięta na cały ekran */
+        /* Mocny efekt grubego płynnego szkła */
         .glass-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.01);
-            backdrop-filter: blur(40px) saturate(120%);
-            -webkit-backdrop-filter: blur(40px) saturate(120%);
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(50px) saturate(140%);
+            -webkit-backdrop-filter: blur(50px) saturate(140%);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             z-index: 2;
         }
 
-        /* Kontener na teksty wyrównany do układu z grafiki */
         .content-wrapper {
             position: relative;
             z-index: 3;
@@ -128,6 +133,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transition: transform 0.5s ease-out;
         }
 
         .card-top {
@@ -161,15 +167,15 @@
             transform: translateY(20px);
         }
 
-        /* Klasy aktywujące animacje wejścia */
         .animate-fade-in {
-            animation: fadeInUp 1s forwards cubic-bezier(0.16, 1, 0.3, 1);
+            animation: fadeInUp 1.2s forwards cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         @keyframes liquidMove {
-            0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(120deg) scale(1.1); }
-            100% { transform: rotate(360deg) scale(1); }
+            0% { transform: rotate(0deg) scale(1) translate(0px, 0px); }
+            33% { transform: rotate(45deg) scale(1.1) translate(30px, -50px); }
+            66% { transform: rotate(90deg) scale(0.95) translate(-20px, 40px); }
+            100% { transform: rotate(180deg) scale(1) translate(0px, 0px); }
         }
 
         @keyframes fadeInUp {
@@ -179,22 +185,27 @@
             }
         }
 
+        /* Druga sekcja, która nachodzi i wypycha tło */
         .projects-section {
             min-height: 100vh;
-            background-color: #050505;
-            padding: 100px 40px;
+            background-color: #030303;
+            padding: 120px 40px;
             display: flex;
             flex-direction: column;
             align-items: center;
             position: relative;
-            z-index: 3;
+            z-index: 2;
+            box-shadow: 0 -20px 40px rgba(0,0,0,0.8);
         }
 
         .projects-section h2 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 40px;
             font-weight: 600;
             letter-spacing: 1px;
+            background: linear-gradient(135deg, #ffffff 0%, #a3a3a3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     </style>
 </head>
@@ -208,11 +219,11 @@
     </div>
 
     <div id="main-content">
-        <section class="hero-section">
+        <section class="hero-section" id="hero">
             <div class="liquid-bg"></div>
             <div class="glass-overlay"></div>
 
-            <div class="content-wrapper">
+            <div class="content-wrapper" id="hero-content">
                 <div class="card-top" id="anim-top">
                     <span>Let's create</span>
                 </div>
@@ -240,7 +251,6 @@
                 loader.style.visibility = 'hidden';
                 content.style.opacity = '1';
 
-                // Odpalenie animacji tekstów po zniknięciu loadera
                 setTimeout(() => {
                     document.getElementById('anim-top').classList.add('animate-fade-in');
                     document.getElementById('anim-middle').classList.add('animate-fade-in');
@@ -248,6 +258,22 @@
                 }, 200);
 
             }, 2500);
+        });
+
+        // Dynamiczna animacja przy przechodzeniu w dół (scrollu)
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const hero = document.getElementById('hero');
+            const heroContent = document.getElementById('hero-content');
+            
+            if (scrollPos <= windowHeight) {
+                // Płynne podnoszenie i ściemnianie sekcji liquid glass wraz ze scrollem
+                const progress = scrollPos / windowHeight;
+                hero.style.transform = `translateY(-${scrollPos * 0.4}px)`;
+                hero.style.opacity = 1 - progress;
+                heroContent.style.transform = `translateY(-${scrollPos * 0.2}px)`;
+            }
         });
     </script>
 
