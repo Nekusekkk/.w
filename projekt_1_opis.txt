@@ -1,0 +1,39 @@
+TYTUŁ:
+Lunatic Shop
+
+TAGI:
+Discord Ecosystem / UI/UX / Full-Stack
+
+WPROWADZENIE:
+Zaawansowany projekt ekosystemu e-commerce na platformie Discord, łączący unikalną architekturę informacji (UI/UX) z autorskim systemem backendowym (dedykowanym botem). Projekt w pełni automatyzuje ścieżkę użytkownika – od bezpiecznej weryfikacji, przez generowanie ticketów i obsługę płatności, aż po zaawansowane logowanie akcji i analitykę finansową w czasie rzeczywistym.
+
+SEKCJA_1_TYTUŁ:
+Autorskie Rozwiązanie Backendowe (Dedykowany Bot)
+
+SEKCJA_1_OPIS:
+Sercem projektu jest autorski bot, stworzony od podstaw w celu wyeliminowania zewnętrznych, zawodnych rozwiązań i pełnej kontroli nad danymi użytkowników.
+
+SEKCJA_1_PUNKTY:
+- Zautomatyzowany Proces Sprzedażowy: Bot w pełni obsługuje system zakupowy. Generuje prywatne kanały transakcyjne (#stwórz-ticket), zarządza bazą produktów (#wyszukaj-produkt) oraz odpowiada za logikę losowania zniżek (#losuj-zniżkę).
+- Live Data Engine (Statystyki): Autorski skrypt dynamicznie zlicza i aktualizuje statystyki serwera w czasie rzeczywistym (liczba klientów, zweryfikowanych użytkowników oraz całkowity obrót finansowy w PLN widoczny w sekcji Staty!).
+- Moduł Finansowo-Rozliczeniowy: Bot posiada wbudowany system rozliczeń dla sprzedawców (#rozliczenia) oraz automatycznie generuje transkrypty z każdej zamkniętej transakcji (#transcript), co zapewnia pełną transparentność i bezpieczeństwo.
+- Zaawansowany System Logowania (Audyt): Wszystkie krytyczne akcje (logowania, zakupy, zmiany statusów zamówień w sekcji w realizacji) są przetwarzane przez bota i wysyłane do zabezpieczonych kanałów administracyjnych.
+
+SEKCJA_2_TYTUŁ:
+Projekt Interfejsu (UI) & Projektowanie Doświadczeń (UX)
+
+SEKCJA_2_PUNKTY:
+- Spójna Tożsamość Wizualna (Cyberpunk/Dark Mode): Interfejs zaprojektowany z myślą o estetyce mrocznego fioletu i neonowych akcentów, które pełnią funkcję wskaźników statusu (np. zielone checkmarki przy weryfikacji i legitymizacji transakcji).
+- Clear Text UI: Użycie niestandardowej typografii oraz spójnego systemu kursorów strukturalnych (\, ›), co diametralnie poprawia czytelność (skanowalność tekstową) i eliminuje chaos wizualny.
+- Redukcja Obciążenia Poznawczego: Zastosowanie zaawansowanego systemu uprawnień (permissions). Użytkownik widzi tylko te sekcje, które są mu w danym momencie potrzebne (np. strefa klienta aktywuje się dopiero po dokonaniu zakupu), co optymalizuje User Journey.
+
+SEKCJA_3_TYTUŁ:
+Specyfikacja Techniczna
+
+SEKCJA_3_PUNKTY:
+- Rola w projekcie: Full-Stack Discord Developer / UI/UX Designer
+- Backend: Autorski bot Discord (obsługa API, system ticketów, logowanie danych, integracje płatności).
+- Frontend/UI: Zaawansowana architektura kanałów Discord, customowe formatowanie, autorskie layouty wiadomości / embedów.
+
+ZDJĘCIA:
+zdjecie_glowne.png, podglad_systemu.jpg, finalny_look.png
